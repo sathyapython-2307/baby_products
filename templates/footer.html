@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EarthBubs Footer</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .footer-section {
+            background: linear-gradient(135deg, #b3e5fc 0%, #81d4fa 100%);
+            color: #333;
+            padding: 50px 0 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .footer-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #333;
+            text-transform: uppercase;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: #666;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #333;
+            text-decoration: none;
+            font-size: 15px;
+            line-height: 1.6;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #00bcd4;
+        }
+
+        .contact-info p {
+            margin-bottom: 12px;
+            font-size: 15px;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .contact-info strong {
+            font-weight: 600;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #333;
+            font-size: 18px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .social-icon:hover {
+            background: rgba(0, 188, 212, 0.2);
+            color: #00bcd4;
+            transform: translateY(-3px);
+        }
+
+        .footer-divider {
+            border: none;
+            height: 1px;
+            background: rgba(102, 102, 102, 0.3);
+            margin: 40px 0 20px;
+        }
+
+        .copyright {
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .chat-time {
+            font-size: 14px;
+            line-height: 1.5;
+            margin-top: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .footer-section {
+                padding: 30px 0 15px;
+            }
+
+            .footer-title {
+                font-size: 16px;
+                margin-bottom: 15px;
+            }
+
+            .footer-links a,
+            .contact-info p {
+                font-size: 14px;
+            }
+
+            .social-icons {
+                justify-content: flex-start;
+                margin-top: 15px;
+            }
+
+            .social-icon {
+                width: 35px;
+                height: 35px;
+                font-size: 16px;
+            }
+
+            .footer-divider {
+                margin: 30px 0 15px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .footer-section {
+                padding: 25px 0 10px;
+            }
+
+            .footer-title {
+                font-size: 15px;
+                margin-bottom: 12px;
+            }
+
+            .footer-links li {
+                margin-bottom: 8px;
+            }
+
+            .contact-info p {
+                margin-bottom: 8px;
+                font-size: 13px;
+            }
+
+            .social-icons {
+                gap: 10px;
+            }
+
+            .copyright {
+                font-size: 12px;
+            }
+        }
+
+        /* Demo content styling */
+        .demo-content {
+            min-height: 50vh;
+            background: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+        <!-- Demo content area -->
+        <div class="demo-content">
+            <div class="text-center">
+                <h2>Your Website Content Here</h2>
+                <p>This is a demo to show the footer. Scroll down to see the footer section.</p>
+            </div>
+        </div>
+
+    <!-- Footer Section -->
+    <footer class="footer-section">
+        <div class="container">
+            <div class="row">
+                <!-- KNOW Column -->
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 class="footer-title">KNOW</h5>
+                    <ul class="footer-links">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">About Earthbubs Store</a></li>
+                        <li><a href="#">Bulk Purchase & Corporate Gifts</a></li>
+                    </ul>
+                </div>
+
+                <!-- TERMS & CONDITIONS Column -->
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 class="footer-title">TERMS & CONDITIONS</h5>
+                    <ul class="footer-links">
+                        <li><a href="#">Shipping & Return Policies</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">FAQ's</a></li>
+                    </ul>
+                </div>
+
+                <!-- CONTACT US Column -->
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 class="footer-title">CONTACT US</h5>
+                    <div class="contact-info">
+                        <p><strong>For Sale:</strong> Earthbubs@co.in</p>
+                        <p><strong>Call:</strong> +91 1234567890</p>
+                        <p><strong>For Complaints:</strong> 1800 202 2222</p>
+                        <div class="chat-time">
+                            <p><strong>Chat Time:</strong> Our Team is Available<br>
+                            From Monday to Saturday from<br>
+                            9.00AM to 8.00PM</p>
+                        </div>
+                        <p><strong>For Complaints:</strong> Ebcustomercare.com</p>
+                    </div>
+                </div>
+
+                <!-- FOLLOW US Column -->
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 class="footer-title">FOLLOW US</h5>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon" title="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-icon" title="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-icon" title="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Divider -->
+            <hr class="footer-divider">
+
+            <!-- Copyright -->
+            <div class="row">
+                <div class="col-12">
+                    <p class="copyright">Copyright © 2025 All Rights Reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

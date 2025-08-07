@@ -1,0 +1,70 @@
+/* Custom styles for EarthBubs login/signup */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    min-height: 100vh;
+}
+
+.btn-signup {
+    background: #00cbe6 !important;
+    border-radius: 12px !important;
+    font-weight: 600 !important;
+    font-size: 18px !important;
+    margin-bottom: 16px !important;
+    color: #fff !important;
+    border: none !important;
+}
+
+.btn-signup:hover {
+    background: #00bcd4 !important;
+}
+
+.btn-google {
+    border-radius: 12px !important;
+    border: 2px solid #e0e0e0 !important;
+    background: #fff !important;
+    color: #222 !important;
+    font-weight: 500 !important;
+    font-size: 17px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    margin-bottom: 24px !important;
+}
+
+.btn-google:hover {
+    border-color: #00bcd4 !important;
+    background: #f8f9fa !important;
+}
+
+.form-control {
+    border: none;
+    border-bottom: 2px solid #e0e0e0;
+    border-radius: 0;
+    padding: 15px 0;
+    font-size: 16px;
+    background: transparent;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    box-shadow: none;
+    border-bottom-color: #00bcd4;
+    background: transparent;
+}
+
+.form-control::placeholder {
+    color: #999;
+    font-size: 16px;
+}
+
+.auth-switch a {
+    color: #00cbe6 !important;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.auth-switch a:hover {
+    color: #00acc1 !important;
+}

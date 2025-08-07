@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container py-5 text-center">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb bg-white px-0">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'cart' %}">Add to Cart</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'checkout' %}">Payments</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Order Complete</li>
+        </ol>
+    </nav>
+    <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 60vh;">
+        <img src="../static/images/order-completed.png" alt="Order Complete" class="mb-4" style="width: 180px;">
+        <h5 class="mb-2">Order ID: {{ order_id }}</h5>
+        <h2 class="fw-bold mb-3" style="color: #23235b;">Your Order Is Completed!</h2>
+        <p class="text-muted mb-0">Thank you for your order! Your order is being processed and will be completed within 3-6 hours. You will receive an email confirmation when your order is completed.</p>
+    </div>
+</div>
+{% endblock %}

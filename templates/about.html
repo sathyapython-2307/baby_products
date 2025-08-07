@@ -1,0 +1,120 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}About Us - EarthBubs{% endblock %}
+
+{% block content %}
+<div class="about-simple">
+    <nav aria-label="breadcrumb" style="margin-bottom: 18px;">
+        <ol class="breadcrumb" style="background: none; padding-left: 0;">
+            <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">About</li>
+        </ol>
+    </nav>
+    <div class="about-hero">
+        <div class="about-logo-block">
+            <img src="{% static 'images/earth-bud-logo.png' %}" alt="EarthBubs Logo" class="about-logo">
+            <div class="about-brand">EarthBubs</div>
+        </div>
+        <div class="about-main">
+            <h1>About Us</h1>
+            <p class="about-lead">
+                At EarthBubs, we believe that every baby deserves the safest, softest start in life. That’s why we’re dedicated to offering high quality, trusted baby products that combine comfort, care, and innovation all wrapped in love. Born from a parent's desire for gentle, safe, and natural baby essentials, our journey began with one goal: to make parenting a little easier, and a lot more joyful. From soft diapers and skin-loving care to smart strollers and feeding must haves, every product we offer is thoughtfully chosen and thoroughly tested for your baby's well being. We’re more than just a store—we’re part of your parenting journey.
+            </p>
+            <div class="about-diff">
+                <div class="about-diff-title">What Makes Us Different:</div>
+                <ul class="about-diff-list">
+                    <li>🪴 Natural, safe, and toxin-free ingredients</li>
+                    <li>🩺 Pediatrician & dermatologist approved</li>
+                    <li>🧑‍🍼 Designed with real parents in mind</li>
+                    <li>🌎 Eco-conscious and cruelty-free practices</li>
+                    <li>❤️ 10,000+ happy families and growing!</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+.about-simple {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #222;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 10px 40px 10px;
+}
+.about-hero {
+    display: flex;
+    align-items: flex-start;
+    gap: 48px;
+}
+.about-logo-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 180px;
+    margin-top: 10px;
+}
+.about-logo {
+    width: 120px;
+    height: auto;
+    margin-bottom: 10px;
+}
+.about-brand {
+    font-size: 2rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+.about-main {
+    flex: 1;
+    min-width: 0;
+}
+.about-main h1 {
+    font-size: 2.2rem;
+    font-weight: 600;
+    margin-bottom: 18px;
+}
+.about-lead {
+    font-size: 1.15rem;
+    line-height: 1.7;
+    margin-bottom: 28px;
+}
+.about-diff-title {
+    font-size: 1.05rem;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+.about-diff-list {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 0;
+}
+.about-diff-list li {
+    font-size: 1.05rem;
+    margin-bottom: 7px;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+@media (max-width: 700px) {
+    .about-hero {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .about-logo-block {
+        flex-direction: row;
+        align-items: center;
+        min-width: 0;
+        margin-top: 0;
+        margin-bottom: 10px;
+    }
+    .about-logo {
+        width: 70px;
+        margin-bottom: 0;
+        margin-right: 12px;
+    }
+    .about-brand {
+        font-size: 1.3rem;
+    }
+}
+</style>
+{% endblock %}

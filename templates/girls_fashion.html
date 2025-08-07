@@ -1,0 +1,447 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Girls Fashion{% endblock %}
+{% block content %}
+<style>
+    .product-grid {
+        display: grid;
+        gap: 30px;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        width: 100%;
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+    .card {
+        background-color: #fff;
+        border-radius: 12px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        text-align: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        width: 100%;
+        max-width: 425px;
+        margin: 0 auto;
+    }
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+    .new-badge {
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: #ff6b9d;
+        color: #fff;
+        padding: 6px 12px;
+        border-bottom-right-radius: 12px;
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size: 0.8em;
+        z-index: 2;
+    }
+    .image-container {
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-grow: 1;
+        min-height: 180px;
+    }
+    .product-image {
+        max-width: 100%;
+        height: auto;
+        max-height: 180px;
+        border-radius: 8px;
+        object-fit: contain;
+    }
+    .card-content-wrapper {
+        position: relative;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin-top: 20px;
+    }
+    .svg-container {
+        position: absolute;
+        bottom: -75px;
+        left: 0;
+        width: 100%;
+        height: 123%;
+        z-index: 0;
+        transform: scaleX(1.05);
+    }
+    .svg-container svg {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+    .card-content {
+        position: relative;
+        z-index: 1;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-end;
+        min-height: 150px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .product-title {
+        font-size: 1.3rem;
+        font-weight: bold;
+        color: #333;
+        text-align: left;
+        width: 100%;
+        position: relative;
+        top: 10px;
+    }
+    .rating {
+        color: #ffc107;
+        text-align: left;
+        width: 100%;
+    }
+    .star {
+        font-size: 1.1rem;
+    }
+    .price-info {
+        display: flex;
+        justify-content: flex-start;
+        align-items: baseline;
+        gap: 10px;
+        margin-top: 10px;
+        width: 100%;
+    }
+    .mrp {
+        text-decoration: line-through;
+        color: #888;
+        font-size: 0.9rem;
+    }
+    .price {
+        font-size: 1.3rem;
+        font-weight: bold;
+        color: #000;
+    }
+    .buy-button {
+        background-color: #ff6b9d;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        font-weight: bold;
+        border-radius: 30px;
+        cursor: pointer;
+        position: absolute;
+        right: 3px;
+        bottom: 85px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+    .buy-button:hover {
+        background-color: #e05584;
+        transform: scale(1.05);
+    }
+    @media (max-width: 1024px) {
+        .product-grid {
+            gap: 20px;
+        }
+        .card {
+            max-width: 100%;
+        }
+        .product-title {
+            font-size: 1.2rem;
+        }
+        .price {
+            font-size: 1.2rem;
+        }
+        .buy-button {
+            padding: 8px 20px;
+            font-size: 0.9rem;
+        }
+    }
+    @media (max-width: 768px) {
+        .product-grid {
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        .image-container {
+            padding: 15px;
+            min-height: 150px;
+        }
+        .product-image {
+            max-height: 150px;
+        }
+        .card-content {
+            padding: 15px;
+        }
+        .product-title {
+            font-size: 1.1rem;
+        }
+        .price {
+            font-size: 1.1rem;
+        }
+        .mrp {
+            font-size: 0.8rem;
+        }
+        .buy-button {
+            right: 10px;
+            bottom: 65px;
+            padding: 8px 18px;
+            font-size: 19px;
+        }
+    }
+    @media (max-width: 480px) {
+        .product-grid {
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+        .image-container {
+            min-height: 130px;
+        }
+        .product-image {
+            max-height: 130px;
+        }
+        .card-content {
+            min-height: 130px;
+        }
+        .product-title {
+            font-size: 1rem;
+            position: relative;
+            top: 20px;
+        }
+        .rating {
+            position: relative;
+            top: 5px;
+        }
+        .star {
+            font-size: 1rem;
+        }
+        .price {
+            font-size: 1rem;
+        }
+        .mrp {
+            font-size: 0.8rem;
+        }
+        .buy-button {
+            padding: 7px 16px;
+            font-size: 0.9rem;
+        }
+    }
+</style>
+<div class="product-grid">
+    <!-- Product 1 -->
+    <div class="card">
+        <div class="new-badge">NEW</div>
+        <div class="image-container">
+            <img src="../static/images/g1.png" alt="Halamons Floral" class="product-image">
+        </div>
+        <div class="card-content-wrapper">
+            <div class="svg-container">
+                <svg width="300" height="122" viewBox="0 0 300 122" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M192.807 1H6C-5.04569 1 -14 9.95431 -14 21V130.5C-14 141.546 -5.04569 150.5 6.00001 150.5H295C306.046 150.5 315 141.546 315 130.5V63C315 51.9543 306.046 43 295 43H243.693C237.29 43 231.273 39.9336 227.51 34.752L208.99 9.24802C205.227 4.06644 199.21 1 192.807 1Z" fill="#ffd6e7" stroke="#ffd6e7"/>
+                </svg>
+            </div>
+            <div class="card-content">
+                <h3 class="product-title">Halamons Floral</h3>
+                <div class="rating">
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span>
+                </div>
+                <div class="price-info">
+                    <span class="mrp">MRP ₹1466.00</span>
+                    <span class="price">Price ₹1399.00</span>
+                </div>
+                <form method="post" action="{% url 'add_to_cart' %}" class="d-inline">{% csrf_token %}
+                    <input type="hidden" name="product_name" value="Halamons Floral">
+                    <input type="hidden" name="product_price" value="1399.00">
+                    <input type="hidden" name="product_image" value="../static/images/g1.png">
+                    <button type="submit" class="buy-button">Buy</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product 2 -->
+    <div class="card">
+        <div class="new-badge">NEW</div>
+        <div class="image-container">
+            <img src="../static/images/g2.png" alt="Halamons Victoria" class="product-image">
+        </div>
+        <div class="card-content-wrapper">
+            <div class="svg-container">
+                <svg width="300" height="122" viewBox="0 0 300 122" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M192.807 1H6C-5.04569 1 -14 9.95431 -14 21V130.5C-14 141.546 -5.04569 150.5 6.00001 150.5H295C306.046 150.5 315 141.546 315 130.5V63C315 51.9543 306.046 43 295 43H243.693C237.29 43 231.273 39.9336 227.51 34.752L208.99 9.24802C205.227 4.06644 199.21 1 192.807 1Z" fill="#ffd6e7" stroke="#ffd6e7"/>
+                </svg>
+            </div>
+            <div class="card-content">
+                <h3 class="product-title">Halamons Victoria</h3>
+                <div class="rating">
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span>
+                </div>
+                <div class="price-info">
+                    <span class="mrp">MRP ₹1666.00</span>
+                    <span class="price">Price ₹1299.00</span>
+                </div>
+                <form method="post" action="{% url 'add_to_cart' %}" class="d-inline">{% csrf_token %}
+                    <input type="hidden" name="product_name" value="Halamons Victoria">
+                    <input type="hidden" name="product_price" value="1299.00">
+                    <input type="hidden" name="product_image" value="../static/images/g2.png">
+                    <button type="submit" class="buy-button">Buy</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product 3 -->
+    <div class="card">
+        <div class="new-badge">NEW</div>
+        <div class="image-container">
+            <img src="../static/images/g3.png" alt="Newborn Cutie" class="product-image">
+        </div>
+        <div class="card-content-wrapper">
+            <div class="svg-container">
+                <svg width="300" height="122" viewBox="0 0 300 122" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M192.807 1H6C-5.04569 1 -14 9.95431 -14 21V130.5C-14 141.546 -5.04569 150.5 6.00001 150.5H295C306.046 150.5 315 141.546 315 130.5V63C315 51.9543 306.046 43 295 43H243.693C237.29 43 231.273 39.9336 227.51 34.752L208.99 9.24802C205.227 4.06644 199.21 1 192.807 1Z" fill="#ffd6e7" stroke="#ffd6e7"/>
+                </svg>
+            </div>
+            <div class="card-content">
+                <h3 class="product-title">Newborn Cutie</h3>
+                <div class="rating">
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span>
+                </div>
+                <div class="price-info">
+                    <span class="mrp">MRP ₹2466.00</span>
+                    <span class="price">Price ₹2399.00</span>
+                </div>
+                <form method="post" action="{% url 'add_to_cart' %}" class="d-inline">{% csrf_token %}
+                    <input type="hidden" name="product_name" value="Newborn Cutie">
+                    <input type="hidden" name="product_price" value="2399.00">
+                    <input type="hidden" name="product_image" value="../static/images/g3.png">
+                    <button type="submit" class="buy-button">Buy</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product 4 -->
+    <div class="card">
+        <div class="new-badge">NEW</div>
+        <div class="image-container">
+            <img src="../static/images/g4.png" alt="Fareto Baby" class="product-image">
+        </div>
+        <div class="card-content-wrapper">
+            <div class="svg-container">
+                <svg width="300" height="122" viewBox="0 0 300 122" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M192.807 1H6C-5.04569 1 -14 9.95431 -14 21V130.5C-14 141.546 -5.04569 150.5 6.00001 150.5H295C306.046 150.5 315 141.546 315 130.5V63C315 51.9543 306.046 43 295 43H243.693C237.29 43 231.273 39.9336 227.51 34.752L208.99 9.24802C205.227 4.06644 199.21 1 192.807 1Z" fill="#ffd6e7" stroke="#ffd6e7"/>
+                </svg>
+            </div>
+            <div class="card-content">
+                <h3 class="product-title">Fareto Baby</h3>
+                <div class="rating">
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span>
+                </div>
+                <div class="price-info">
+                    <span class="mrp">MRP ₹866.00</span>
+                    <span class="price">Price ₹699.00</span>
+                </div>
+                <form method="post" action="{% url 'add_to_cart' %}" class="d-inline">{% csrf_token %}
+                    <input type="hidden" name="product_name" value="Fareto Baby">
+                    <input type="hidden" name="product_price" value="699.00">
+                    <input type="hidden" name="product_image" value="../static/images/g4.png">
+                    <button type="submit" class="buy-button">Buy</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product 5 -->
+    <div class="card">
+        <div class="new-badge">NEW</div>
+        <div class="image-container">
+            <img src="../static/images/g5.png" alt="Zibuyu" class="product-image">
+        </div>
+        <div class="card-content-wrapper">
+            <div class="svg-container">
+                <svg width="300" height="122" viewBox="0 0 300 122" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M192.807 1H6C-5.04569 1 -14 9.95431 -14 21V130.5C-14 141.546 -5.04569 150.5 6.00001 150.5H295C306.046 150.5 315 141.546 315 130.5V63C315 51.9543 306.046 43 295 43H243.693C237.29 43 231.273 39.9336 227.51 34.752L208.99 9.24802C205.227 4.06644 199.21 1 192.807 1Z" fill="#ffd6e7" stroke="#ffd6e7"/>
+                </svg>
+            </div>
+            <div class="card-content">
+                <h3 class="product-title">Zibuyu</h3>
+                <div class="rating">
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span>
+                </div>
+                <div class="price-info">
+                    <span class="mrp">MRP ₹866.00</span>
+                    <span class="price">Price ₹499.00</span>
+                </div>
+                <form method="post" action="{% url 'add_to_cart' %}" class="d-inline">{% csrf_token %}
+                    <input type="hidden" name="product_name" value="Zibuyu">
+                    <input type="hidden" name="product_price" value="499.00">
+                    <input type="hidden" name="product_image" value="../static/images/g5.png">
+                    <button type="submit" class="buy-button">Buy</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product 6 -->
+    <div class="card">
+        <div class="new-badge">NEW</div>
+        <div class="image-container">
+            <img src="../static/images/g6.png" alt="Poppes" class="product-image">
+        </div>
+        <div class="card-content-wrapper">
+            <div class="svg-container">
+                <svg width="300" height="122" viewBox="0 0 300 122" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M192.807 1H6C-5.04569 1 -14 9.95431 -14 21V130.5C-14 141.546 -5.04569 150.5 6.00001 150.5H295C306.046 150.5 315 141.546 315 130.5V63C315 51.9543 306.046 43 295 43H243.693C237.29 43 231.273 39.9336 227.51 34.752L208.99 9.24802C205.227 4.06644 199.21 1 192.807 1Z" fill="#ffd6e7" stroke="#ffd6e7"/>
+                </svg>
+            </div>
+            <div class="card-content">
+                <h3 class="product-title">Poppes</h3>
+                <div class="rating">
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span>
+                </div>
+                <div class="price-info">
+                    <span class="mrp">MRP ₹466.00</span>
+                    <span class="price">Price ₹399.00</span>
+                </div>
+                <form method="post" action="{% url 'add_to_cart' %}" class="d-inline">{% csrf_token %}
+                    <input type="hidden" name="product_name" value="Poppes">
+                    <input type="hidden" name="product_price" value="399.00">
+                    <input type="hidden" name="product_image" value="../static/images/g6.png">
+                    <button type="submit" class="buy-button">Buy</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

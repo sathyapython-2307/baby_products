@@ -1,0 +1,258 @@
+{% extends 'base.html' %}
+{% block title %}Contact Us{% endblock %}
+{% block content %}
+<div class="contact-container">
+    <nav aria-label="breadcrumb" style="margin-bottom: 18px;">
+        <ol class="breadcrumb" style="background: none; padding-left: 0;">
+            <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Contact Us</li>
+        </ol>
+    </nav>
+    <div class="contact-flex">
+        <div class="contact-info-card">
+            <h2>Contact Information</h2>
+            <p class="contact-desc">Say something to start a live chat!</p>
+            <div class="contact-detail"><span class="contact-icon">&#128222;</span> +911234567890</div>
+            <div class="contact-detail"><span class="contact-icon">&#9993;</span> Earthbuts@gmail.com</div>
+            <div class="contact-detail"><span class="contact-icon">&#128205;</span> No.5, 12th Main Road, Vijaya Nagar,.<br>Velacheri, Chennai - 600 042.</div>
+            <div class="contact-card-bg"></div>
+        </div>
+        <form class="contact-form" method="post" action="" id="contactForm">
+            {% csrf_token %}
+            <div class="form-row">
+                <div class="form-group">
+                    <label>First Name</label>
+                    <input type="text" name="first_name" required>
+                </div>
+                <div class="form-group">
+                    <label>Last Name</label>
+                    <input type="text" name="last_name" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="text" name="phone" required pattern="[0-9]{10,15}">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group full-width">
+                    <label>Select Subject?</label>
+                    <div class="subject-options">
+                        <label><input type="radio" name="subject" value="General Inquiry" checked> General Inquiry</label>
+                        <label><input type="radio" name="subject" value="Call Request"> Call Request</label>
+                        <label><input type="radio" name="subject" value="Complaint"> Complaint</label>
+                        <label><input type="radio" name="subject" value="Information"> Information</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group full-width">
+                    <label>Message</label>
+                    <textarea name="message" rows="2" placeholder="Write your message.." required></textarea>
+                </div>
+            </div>
+            <div class="form-row">
+                <button type="submit" class="send-btn">Send Message</button>
+            </div>
+            <div id="form-success" class="form-success" style="display:none;">Thank you for contacting us! We'll get back to you soon.</div>
+        </form>
+    </div>
+</div>
+<style>
+.contact-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 10px 40px 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.contact-flex {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.contact-info-card {
+    background: #bfe2ee;
+    border-radius: 10px;
+    padding: 36px 32px 60px 32px;
+    min-width: 320px;
+    max-width: 400px;
+    flex: 1 1 340px;
+    color: #fff;
+    position: relative;
+    box-sizing: border-box;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+}
+.contact-info-card h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+.contact-desc {
+    font-size: 1.1rem;
+    margin-bottom: 28px;
+    color: #eaf6fa;
+}
+.contact-detail {
+    font-size: 1.08rem;
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.contact-icon {
+    font-size: 1.3rem;
+    margin-right: 6px;
+}
+.contact-card-bg {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 80px;
+    background: none;
+    overflow: hidden;
+}
+.contact-card-bg::before {
+    content: '';
+    position: absolute;
+    right: -60px; bottom: -30px;
+    width: 180px; height: 90px;
+    background: #1ed6f7;
+    border-radius: 100px 100px 0 0;
+    opacity: 0.7;
+}
+.contact-card-bg::after {
+    content: '';
+    position: absolute;
+    left: 30px; bottom: -20px;
+    width: 90px; height: 50px;
+    background: #7ee6f7;
+    border-radius: 100px 100px 0 0;
+    opacity: 0.5;
+}
+.contact-form {
+    flex: 2 1 400px;
+    background: #fff;
+    border-radius: 10px;
+    padding: 32px 28px 32px 28px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+    min-width: 320px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: 0;
+    box-sizing: border-box;
+}
+.form-row {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 18px;
+    flex-wrap: wrap;
+}
+.form-group {
+    flex: 1 1 180px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0;
+}
+.form-group.full-width {
+    flex: 1 1 100%;
+}
+.form-group label {
+    font-size: 0.98rem;
+    color: #222;
+    margin-bottom: 4px;
+    font-weight: 500;
+}
+input[type="text"], input[type="email"], textarea {
+    border: none;
+    border-bottom: 2px solid #1ed6f7;
+    background: transparent;
+    font-size: 1.05rem;
+    padding: 7px 2px 7px 0;
+    margin-bottom: 2px;
+    outline: none;
+    color: #222;
+    width: 100%;
+    transition: border-color 0.2s;
+}
+input[type="text"]:focus, input[type="email"]:focus, textarea:focus {
+    border-bottom: 2.5px solid #00b0e0;
+}
+.subject-options {
+    display: flex;
+    gap: 18px;
+    margin-top: 4px;
+}
+.subject-options label {
+    font-weight: 400;
+    font-size: 0.98rem;
+    color: #222;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+input[type="radio"] {
+    accent-color: #1ed6f7;
+    margin-right: 3px;
+}
+textarea {
+    resize: none;
+    min-height: 38px;
+    max-height: 120px;
+}
+.send-btn {
+    background: #1ed6f7;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 12px 48px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-top: 10px;
+    box-shadow: 0 4px 12px rgba(30,214,247,0.08);
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+}
+.send-btn:hover {
+    background: #00b0e0;
+    transform: translateY(-2px) scale(1.03);
+}
+.form-success {
+    color: #00b0e0;
+    font-weight: 500;
+    margin-top: 18px;
+    text-align: center;
+}
+@media (max-width: 900px) {
+    .contact-flex {
+        flex-direction: column;
+        gap: 30px;
+    }
+    .contact-form {
+        margin-left: 0;
+        max-width: 100%;
+    }
+}
+</style>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('contactForm');
+    const successMsg = document.getElementById('form-success');
+    if(form) {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Simulate AJAX form submission
+            setTimeout(function() {
+                form.reset();
+                successMsg.style.display = 'block';
+            }, 500);
+        });
+    }
+});
+</script>
+{% endblock %}
