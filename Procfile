@@ -1,1 +1,1 @@
-web: gunicorn baby_product.wsgi:application
+web: gunicorn baby_product.wsgi
