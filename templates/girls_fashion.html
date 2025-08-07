@@ -238,7 +238,7 @@
     <div class="card">
         <div class="new-badge">NEW</div>
         <div class="image-container">
-            <img src="../static/images/g1.png" alt="Halamons Floral" class="product-image">
+            <img src="{% static 'images/g1.png' %}" alt="Halamons Floral" class="product-image">
         </div>
         <div class="card-content-wrapper">
             <div class="svg-container">
@@ -262,7 +262,7 @@
                 <form method="post" action="{% url 'add_to_cart' %}" class="d-inline">{% csrf_token %}
                     <input type="hidden" name="product_name" value="Halamons Floral">
                     <input type="hidden" name="product_price" value="1399.00">
-                    <input type="hidden" name="product_image" value="../static/images/g1.png">
+                    <input type="hidden" name="product_image" value="{% static 'images/g1.png' %}">
                     <button type="submit" class="buy-button">Buy</button>
                 </form>
             </div>
@@ -273,7 +273,7 @@
     <div class="card">
         <div class="new-badge">NEW</div>
         <div class="image-container">
-            <img src="../static/images/g2.png" alt="Halamons Victoria" class="product-image">
+            <img src="{% static 'images/g2.png' %}" alt="Halamons Victoria" class="product-image">
         </div>
         <div class="card-content-wrapper">
             <div class="svg-container">
@@ -297,7 +297,7 @@
                 <form method="post" action="{% url 'add_to_cart' %}" class="d-inline">{% csrf_token %}
                     <input type="hidden" name="product_name" value="Halamons Victoria">
                     <input type="hidden" name="product_price" value="1299.00">
-                    <input type="hidden" name="product_image" value="../static/images/g2.png">
+                    <input type="hidden" name="product_image" value="{% static 'images/g2.png' %}">
                     <button type="submit" class="buy-button">Buy</button>
                 </form>
             </div>
@@ -308,7 +308,7 @@
     <div class="card">
         <div class="new-badge">NEW</div>
         <div class="image-container">
-            <img src="../static/images/g3.png" alt="Newborn Cutie" class="product-image">
+            <img src="{% static 'images/g3.png' %}" alt="Newborn Cutie" class="product-image">
         </div>
         <div class="card-content-wrapper">
             <div class="svg-container">
@@ -332,7 +332,7 @@
                 <form method="post" action="{% url 'add_to_cart' %}" class="d-inline">{% csrf_token %}
                     <input type="hidden" name="product_name" value="Newborn Cutie">
                     <input type="hidden" name="product_price" value="2399.00">
-                    <input type="hidden" name="product_image" value="../static/images/g3.png">
+                    <input type="hidden" name="product_image" value="{% static 'images/g3.png' %}">
                     <button type="submit" class="buy-button">Buy</button>
                 </form>
             </div>
@@ -343,7 +343,7 @@
     <div class="card">
         <div class="new-badge">NEW</div>
         <div class="image-container">
-            <img src="../static/images/g4.png" alt="Fareto Baby" class="product-image">
+            <img src="{% static 'images/g4.png' %}" alt="Fareto Baby" class="product-image">
         </div>
         <div class="card-content-wrapper">
             <div class="svg-container">
@@ -367,7 +367,7 @@
                 <form method="post" action="{% url 'add_to_cart' %}" class="d-inline">{% csrf_token %}
                     <input type="hidden" name="product_name" value="Fareto Baby">
                     <input type="hidden" name="product_price" value="699.00">
-                    <input type="hidden" name="product_image" value="../static/images/g4.png">
+                    <input type="hidden" name="product_image" value="{% static 'images/g4.png' %}">
                     <button type="submit" class="buy-button">Buy</button>
                 </form>
             </div>
@@ -378,7 +378,7 @@
     <div class="card">
         <div class="new-badge">NEW</div>
         <div class="image-container">
-            <img src="../static/images/g5.png" alt="Zibuyu" class="product-image">
+            <img src="{% static 'images/g5.png' %}" alt="Zibuyu" class="product-image">
         </div>
         <div class="card-content-wrapper">
             <div class="svg-container">
@@ -402,7 +402,7 @@
                 <form method="post" action="{% url 'add_to_cart' %}" class="d-inline">{% csrf_token %}
                     <input type="hidden" name="product_name" value="Zibuyu">
                     <input type="hidden" name="product_price" value="499.00">
-                    <input type="hidden" name="product_image" value="../static/images/g5.png">
+                    <input type="hidden" name="product_image" value="{% static 'images/g5.png' %}">
                     <button type="submit" class="buy-button">Buy</button>
                 </form>
             </div>
@@ -413,7 +413,7 @@
     <div class="card">
         <div class="new-badge">NEW</div>
         <div class="image-container">
-            <img src="../static/images/g6.png" alt="Poppes" class="product-image">
+            <img src="{% static 'images/g6.png' %}" alt="Poppes" class="product-image">
         </div>
         <div class="card-content-wrapper">
             <div class="svg-container">
