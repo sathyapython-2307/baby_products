@@ -99,12 +99,12 @@ def add_to_cart(request):
     cart = request.session.get('cart', {})
     # Use product_name as the key for simplicity
     if product_name in cart:
-        cart[product_name]['quantity'] = str(int(cart[product_name]['quantity']) + 1)
+        cart[product_name]['quantity'] = int(cart[product_name]['quantity']) + 1
     else:
         cart[product_name] = {
             'name': product_name,
             'price': product_price,
-            'quantity': '1',
+            'quantity': 1,
             'image': product_image,
         }
     request.session['cart'] = cart
@@ -112,11 +112,39 @@ def add_to_cart(request):
 
 @require_POST
 def update_cart(request, item_id):
+    from django.http import JsonResponse
     quantity = request.POST.get('quantity')
     cart = request.session.get('cart', {})
     if item_id in cart:
-        cart[item_id]['quantity'] = quantity
+        try:
+            cart[item_id]['quantity'] = int(quantity)
+        except (ValueError, TypeError):
+            cart[item_id]['quantity'] = 1
     request.session['cart'] = cart
+
+    # Calculate updated values for AJAX response
+    cart_items = []
+    cart_subtotal = 0
+    item_subtotal = 0
+    for pid, item in cart.items():
+        try:
+            q = int(item['quantity'])
+        except (ValueError, TypeError):
+            q = 1
+        subtotal = float(item['price']) * q
+        if pid == item_id:
+            item_subtotal = int(subtotal)
+        cart_items.append({'id': pid, 'subtotal': subtotal})
+        cart_subtotal += subtotal
+    cart_discount = 250 if cart_items else 0
+    cart_total = cart_subtotal - cart_discount
+
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest':
+        return JsonResponse({
+            'item_subtotal': item_subtotal,
+            'cart_subtotal': int(cart_subtotal),
+            'cart_total': int(cart_total) if cart_total > 0 else 0,
+        })
     return redirect('cart')
 
 @require_POST
@@ -137,12 +165,16 @@ def checkout_view(request):
     cart_items = []
     cart_subtotal = 0
     for pid, item in cart.items():
-        subtotal = float(item['price']) * int(item['quantity'])
+        try:
+            quantity = int(item['quantity'])
+        except (ValueError, TypeError):
+            quantity = 1
+        subtotal = float(item['price']) * quantity
         cart_items.append({
             'id': pid,
             'name': item['name'],
             'price': item['price'],
-            'quantity': item['quantity'],
+            'quantity': quantity,
             'image_url': item['image'],
             'subtotal': subtotal,
         })

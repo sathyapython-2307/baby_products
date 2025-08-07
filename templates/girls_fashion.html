@@ -437,7 +437,7 @@
                 <form method="post" action="{% url 'add_to_cart' %}" class="d-inline">{% csrf_token %}
                     <input type="hidden" name="product_name" value="Poppes">
                     <input type="hidden" name="product_price" value="399.00">
-                    <input type="hidden" name="product_image" value="../static/images/g6.png">
+                    <input type="hidden" name="product_image" value="{% static 'images/g6.png' %}">
                     <button type="submit" class="buy-button">Buy</button>
                 </form>
             </div>

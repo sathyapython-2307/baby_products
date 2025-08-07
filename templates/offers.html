@@ -287,7 +287,12 @@
                     <span class="mrp">MRP ₹1466.00</span>
                     <span class="price">₹1199.00</span>
                 </div>
-                <button class="buy-button">Buy</button>
+                <form method="post" action="{% url 'add_to_cart' %}" class="d-inline">{% csrf_token %}
+                    <input type="hidden" name="product_name" value="Marcus Bundle">
+                    <input type="hidden" name="product_price" value="1199.00">
+                    <input type="hidden" name="product_image" value="{% static 'images/o2.png' %}">
+                    <button type="submit" class="buy-button">Buy</button>
+                </form>
             </div>
         </div>
     </div>
@@ -313,7 +318,12 @@
                     <span class="mrp">MRP ₹1466.00</span>
                     <span class="price">₹1399.00</span>
                 </div>
-                <button class="buy-button">Buy</button>
+                <form method="post" action="{% url 'add_to_cart' %}" class="d-inline">{% csrf_token %}
+                    <input type="hidden" name="product_name" value="Halemons Floral Deal">
+                    <input type="hidden" name="product_price" value="1399.00">
+                    <input type="hidden" name="product_image" value="{% static 'images/o3.png' %}">
+                    <button type="submit" class="buy-button">Buy</button>
+                </form>
             </div>
         </div>
     </div>
@@ -339,7 +349,12 @@
                     <span class="mrp">MRP ₹600.00</span>
                     <span class="price">₹599.00</span>
                 </div>
-                <button class="buy-button">Buy</button>
+                <form method="post" action="{% url 'add_to_cart' %}" class="d-inline">{% csrf_token %}
+                    <input type="hidden" name="product_name" value="Natural Soap Pack">
+                    <input type="hidden" name="product_price" value="599.00">
+                    <input type="hidden" name="product_image" value="{% static 'images/o4.png' %}">
+                    <button type="submit" class="buy-button">Buy</button>
+                </form>
             </div>
         </div>
     </div>
@@ -365,7 +380,12 @@
                     <span class="mrp">MRP ₹10466.00</span>
                     <span class="price">₹9399.00</span>
                 </div>
-                <button class="buy-button">Buy</button>
+                <form method="post" action="{% url 'add_to_cart' %}" class="d-inline">{% csrf_token %}
+                    <input type="hidden" name="product_name" value="Lavern Special">
+                    <input type="hidden" name="product_price" value="9399.00">
+                    <input type="hidden" name="product_image" value="{% static 'images/o5.png' %}">
+                    <button type="submit" class="buy-button">Buy</button>
+                </form>
             </div>
         </div>
     </div>
@@ -391,7 +411,12 @@
                     <span class="mrp">MRP ₹600.00</span>
                     <span class="price">₹599.00</span>
                 </div>
-                <button class="buy-button">Buy</button>
+                <form method="post" action="{% url 'add_to_cart' %}" class="d-inline">{% csrf_token %}
+                    <input type="hidden" name="product_name" value="Philips Combo Pack">
+                    <input type="hidden" name="product_price" value="599.00">
+                    <input type="hidden" name="product_image" value="{% static 'images/o6.png' %}">
+                    <button type="submit" class="buy-button">Buy</button>
+                </form>
             </div>
         </div>
     </div>

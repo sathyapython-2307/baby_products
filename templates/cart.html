@@ -71,7 +71,7 @@
                     <h5 class="card-title mb-3">Cart Total</h5>
                     <div class="d-flex justify-content-between mb-2">
                         <span>Subtotal:</span>
-                        <span>₹{{ cart_subtotal }}</span>
+                        <span id="cart-subtotal">₹{{ cart_subtotal }}</span>
                     </div>
                     <div class="d-flex justify-content-between mb-2">
                         <span>Discount:</span>
@@ -84,7 +84,7 @@
                     <hr>
                     <div class="d-flex justify-content-between mb-3">
                         <strong>Total:</strong>
-                        <strong>₹{{ cart_total }}</strong>
+                        <strong id="cart-total">₹{{ cart_total }}</strong>
                     </div>
                     <a href="{% url 'checkout' %}" class="btn btn-info w-100">Process to checkout</a>
                 </div>
@@ -92,4 +92,34 @@
         </div>
     </div>
 </div>
+{% endblock %}
+{% block scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('select[name="quantity"]').forEach(function(select) {
+        select.addEventListener('change', function() {
+            var form = this.closest('form');
+            var formData = new FormData(form);
+            var url = form.action;
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest',
+                    'X-CSRFToken': formData.get('csrfmiddlewaretoken'),
+                },
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Update subtotal for this row
+                var row = form.closest('tr');
+                row.querySelector('td:last-child').textContent = '₹ ' + data.item_subtotal;
+                // Update cart totals
+                document.querySelector('span#cart-subtotal').textContent = '₹' + data.cart_subtotal;
+                document.querySelector('strong#cart-total').textContent = '₹' + data.cart_total;
+            });
+        });
+    });
+});
+</script>
 {% endblock %}

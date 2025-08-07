@@ -258,7 +258,7 @@
                 <form method="post" action="{% url 'add_to_cart' %}" class="d-inline">{% csrf_token %}
                     <input type="hidden" name="product_name" value="Mee Mee Stroller">
                     <input type="hidden" name="product_price" value="2999.00">
-                    <input type="hidden" name="product_image" value="../static/images/stroller-1.png">
+                    <input type="hidden" name="product_image" value="{% static 'images/stroller-1.png' %}">
                     <button type="submit" class="buy-button">Buy</button>
                 </form>
             </div>
@@ -285,7 +285,12 @@
                     <span class="mrp">MRP ₹36,466.00</span>
                     <span class="price">₹33,399.00</span>
                 </div>
-                <button class="buy-button">Buy</button>
+                <form method="post" action="{% url 'add_to_cart' %}" class="d-inline">{% csrf_token %}
+                    <input type="hidden" name="product_name" value="Baby Rocker">
+                    <input type="hidden" name="product_price" value="33399.00">
+                    <input type="hidden" name="product_image" value="{% static 'images/st2.png' %}">
+                    <button type="submit" class="buy-button">Buy</button>
+                </form>
             </div>
         </div>
     </div>
@@ -310,7 +315,12 @@
                     <span class="mrp">MRP ₹3,10,466.00</span>
                     <span class="price">₹33,399.00</span>
                 </div>
-                <button class="buy-button">Buy</button>
+                <form method="post" action="{% url 'add_to_cart' %}" class="d-inline">{% csrf_token %}
+                    <input type="hidden" name="product_name" value="Lavern">
+                    <input type="hidden" name="product_price" value="33399.00">
+                    <input type="hidden" name="product_image" value="{% static 'images/st3.png' %}">
+                    <button type="submit" class="buy-button">Buy</button>
+                </form>
             </div>
         </div>
     </div>
@@ -335,7 +345,12 @@
                     <span class="mrp">MRP ₹54,800.00</span>
                     <span class="price">₹33,399.00</span>
                 </div>
-                <button class="buy-button">Buy</button>
+                <form method="post" action="{% url 'add_to_cart' %}" class="d-inline">{% csrf_token %}
+                    <input type="hidden" name="product_name" value="Rock Roll">
+                    <input type="hidden" name="product_price" value="33399.00">
+                    <input type="hidden" name="product_image" value="{% static 'images/st4.png' %}">
+                    <button type="submit" class="buy-button">Buy</button>
+                </form>
             </div>
         </div>
     </div>
@@ -360,7 +375,12 @@
                     <span class="mrp">MRP ₹37,000.00</span>
                     <span class="price">₹60,000.00</span>
                 </div>
-                <button class="buy-button">Buy</button>
+                <form method="post" action="{% url 'add_to_cart' %}" class="d-inline">{% csrf_token %}
+                    <input type="hidden" name="product_name" value="Kinger">
+                    <input type="hidden" name="product_price" value="60000.00">
+                    <input type="hidden" name="product_image" value="{% static 'images/st5.png' %}">
+                    <button type="submit" class="buy-button">Buy</button>
+                </form>
             </div>
         </div>
     </div>
@@ -385,7 +405,12 @@
                     <span class="mrp">MRP ₹55,466.00</span>
                     <span class="price">₹43,399.00</span>
                 </div>
-                <button class="buy-button">Buy</button>
+                <form method="post" action="{% url 'add_to_cart' %}" class="d-inline">{% csrf_token %}
+                    <input type="hidden" name="product_name" value="Dravo">
+                    <input type="hidden" name="product_price" value="43399.00">
+                    <input type="hidden" name="product_image" value="{% static 'images/st6.png' %}">
+                    <button type="submit" class="buy-button">Buy</button>
+                </form>
             </div>
         </div>
     </div>

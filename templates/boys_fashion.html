@@ -432,7 +432,7 @@
                     {% csrf_token %}
                     <input type="hidden" name="product_name" value="Marcus">
                     <input type="hidden" name="product_price" value="1199.00">
-                    <input type="hidden" name="product_image" value="../static/images/b6.png">
+                    <input type="hidden" name="product_image" value="{% static 'images/b6.png' %}">
                     <button type="submit" class="buy-button">Buy</button>
                 </form>
             </div>
